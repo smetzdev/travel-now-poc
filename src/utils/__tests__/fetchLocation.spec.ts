@@ -1,4 +1,4 @@
-import { fetchGeoCode } from '../fetchGeoCode'
+import { fetchLocation } from '../fetchLocation'
 import { mockFetchWithResponse } from './testHelper'
 
 const mockApiResponse = {
@@ -26,7 +26,7 @@ it('should fetch a city based on a search string', async () => {
     lon: expectedLon
   }
 
-  const result = await fetchGeoCode('Saarbrücken')
+  const result = await fetchLocation('Saarbrücken')
   console.log(result)
 
   expect(result).toEqual(expectedResult)

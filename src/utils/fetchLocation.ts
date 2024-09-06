@@ -2,7 +2,7 @@
  *
  * @param citySearchString zip and/or city name
  */
-export const fetchGeoCode = async (citySearchString: string) => {
+export const fetchLocation = async (citySearchString: string) => {
   const apiUri = new URL('https://api.mapbox.com/search/geocode/v6/forward')
 
   apiUri.searchParams.append('access_token', import.meta.env.VITE_GEOCODE_API_KEY)
