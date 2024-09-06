@@ -1,4 +1,5 @@
 import './assets/tailwind.css'
+import 'mapbox-gl/dist/mapbox-gl.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
