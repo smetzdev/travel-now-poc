@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import tailwindColors from 'tailwindcss/colors'
+import tailwindPluginForms from '@tailwindcss/forms'
 
 export default {
   content: ['./index.html', './src/**/*.vue'],
@@ -11,5 +12,5 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [tailwindPluginForms]
 }
