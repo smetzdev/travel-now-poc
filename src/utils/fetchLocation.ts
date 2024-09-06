@@ -5,7 +5,7 @@
 export const fetchLocation = async (citySearchString: string) => {
   const apiUri = new URL('https://api.mapbox.com/search/geocode/v6/forward')
 
-  apiUri.searchParams.append('access_token', import.meta.env.VITE_GEOCODE_API_KEY)
+  apiUri.searchParams.append('access_token', import.meta.env.VITE_MAPBOX_API_KEY)
   apiUri.searchParams.append('q', citySearchString)
 
   const apiResponse = await fetch(apiUri.toString())
