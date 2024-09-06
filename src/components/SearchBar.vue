@@ -20,7 +20,7 @@ const submit = (e: Event) => {
 <template>
   <form class="flex shadow-sm" @submit="submit">
     <input
-      class="flex-1 border-0 rounded-l-md py-4 bg-white"
+      class="flex-1 border-0 rounded-l-md py-4 bg-white focus:ring-inset focus:ring-primary-500"
       type="text"
       placeholder="Enter ZIP and/or city..."
       v-model="searchString"
