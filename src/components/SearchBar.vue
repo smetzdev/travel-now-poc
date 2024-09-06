@@ -30,7 +30,7 @@ const submit = (e: Event) => {
     <button
       class="px-4 py-2 bg-primary-500 text-primary-50 rounded-r-md hover:bg-primary-600 transition-colors active:bg-primary-700"
     >
-      Add Location
+      Add<span class="max-sm:hidden"> Location</span>
     </button>
   </form>
 </template>
