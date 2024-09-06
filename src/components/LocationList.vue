@@ -4,6 +4,7 @@ import { type LocationWithWeather } from '@/types/LocationWithWeather'
 
 defineProps<{
   locations: LocationWithWeather[]
+  removeLocation: (index: number) => void
 }>()
 </script>
 
@@ -11,9 +12,10 @@ defineProps<{
   <ul class="divide-y" v-auto-animate>
     <LocationListItem
       :key="location.label"
-      v-for="location in locations"
+      v-for="(location, index) in locations"
       :label="location.label"
       :temperature="location.temperature"
+      :remove-location="() => removeLocation(index)"
     />
   </ul>
 </template>
