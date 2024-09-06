@@ -14,14 +14,16 @@ defineProps<{
     <span>{{ label }}</span>
     <div class="flex items-center divide-x">
       <span class="text-gray-500 ml-auto pr-2">{{ temperature.toFixed(1) }}°C</span>
-      <button class="pl-2" @click="removeLocation">
-        <span class="sr-only">Remove Location</span>
-        <HiTrash class="hover:text-red-500 text-gray-400" />
-      </button>
-      <button class="pl-2" @click="setCurrentLocation">
-        <span class="sr-only">Show Location on Map</span>
-        <HiMapPin class="hover:text-primary-500 text-gray-400" />
-      </button>
+      <div class="pl-2 flex gap-2">
+        <button @click="removeLocation" title="Remove Location">
+          <span class="sr-only">Remove Location</span>
+          <HiTrash class="hover:text-red-500 text-gray-400" />
+        </button>
+        <button @click="setCurrentLocation" title="Show on Map">
+          <span class="sr-only">Show on Map</span>
+          <HiMapPin class="hover:text-primary-500 text-gray-400" />
+        </button>
+      </div>
     </div>
   </li>
 </template>
