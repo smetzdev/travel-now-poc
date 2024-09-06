@@ -4,6 +4,7 @@ import { onMounted, reactive, watch } from 'vue'
 import { type LocationWithWeather } from '@/types/LocationWithWeather'
 import { fetchLocation } from '@/utils/fetchLocation'
 import { fetchLocationWeather } from '@/utils/fetchLocationWeather'
+import { updateLocationWeathers } from '@/utils/updateLocationWeathers'
 
 export function useLocations() {
   const STORAGE_KEY = 'travel-now-locations'
@@ -32,11 +33,12 @@ export function useLocations() {
     }
   }
 
-  onMounted(() => {
+  onMounted(async () => {
     const storedLocations = localStorage.getItem(STORAGE_KEY)
     if (storedLocations) {
       const parsedLocations = JSON.parse(storedLocations)
-      locations.push(...parsedLocations)
+      const updatedLocations = await updateLocationWeathers(parsedLocations)
+      locations.push(...updatedLocations)
     }
   })
 
