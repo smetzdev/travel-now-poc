@@ -12,7 +12,11 @@ const { currentLocation, locations, addLocation, removeLocation, setCurrentCurre
   <main class="flex justify-center items-center min-h-svh p-8 text-lg">
     <h1 class="sr-only">Travel Now POC</h1>
     <div class="w-full md:w-2/3 xl:w-2/5 flex flex-col gap-4">
-      <LocationMap :current-location="currentLocation" v-if="currentLocation" />
+      <LocationMap
+        :current-location="currentLocation"
+        :locations="locations"
+        v-if="currentLocation"
+      />
       <SearchBar :addLocation="addLocation" />
       <LocationList
         :locations="locations"

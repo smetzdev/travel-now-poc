@@ -5,40 +5,50 @@ import type { LocationWithWeather } from '@/types/LocationWithWeather'
 
 const props = defineProps<{
   currentLocation: LocationWithWeather
+  locations: LocationWithWeather[]
 }>()
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API_KEY
 
 const mapRef = useTemplateRef('mapContainer')
 const map = ref<mapboxgl.Map>()
-const marker = ref<mapboxgl.Marker>()
+const currentMarker = ref<mapboxgl.Marker>()
 
 onMounted(() => {
   map.value = new mapboxgl.Map({
     container: mapRef.value!,
-    style: 'mapbox://styles/smetzdev/club3tuf800xb01pr0ms1fnvb',
+    style: 'mapbox://styles/smetzdev/cm0qyhnur00og01qk2mna2btr',
     center: [6.996115, 49.227313],
     zoom: 9
   })
 
-  updateMarker()
+  setInitialMarkers()
 })
 
-const updateMarker = () => {
-  const center: LngLatLike = [props.currentLocation.lon, props.currentLocation.lat]
+const setMarker = (location: LocationWithWeather) => {
+  const center: LngLatLike = [location.lon, location.lat]
+  return new mapboxgl.Marker().setLngLat(center).addTo(map.value!)
+}
 
-  marker.value = new mapboxgl.Marker().setLngLat(center).addTo(map.value!)
-
-  map.value!.flyTo({
-    center: center
+const setInitialMarkers = () => {
+  props.locations.forEach((location) => {
+    setMarker(location)
   })
 }
 
-watch(() => props.currentLocation, updateMarker)
+const flyToCurrentLocation = () => {
+  currentMarker.value = setMarker(props.currentLocation)
+
+  map.value!.flyTo({
+    center: currentMarker.value.getLngLat()
+  })
+}
+
+watch(() => props.currentLocation, flyToCurrentLocation)
 
 onUnmounted(() => {
   map.value?.remove()
-  marker.value?.remove()
+  currentMarker.value?.remove()
 })
 </script>
 
