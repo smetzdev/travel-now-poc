@@ -18,7 +18,7 @@ onMounted(() => {
   map.value = new mapboxgl.Map({
     container: mapRef.value!,
     style: 'mapbox://styles/smetzdev/cm0qyhnur00og01qk2mna2btr',
-    center: [6.996115, 49.227313],
+    center: [props.currentLocation.lon, props.currentLocation.lat],
     zoom: 9
   })
 
