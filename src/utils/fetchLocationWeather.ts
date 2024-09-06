@@ -1,5 +1,5 @@
 export const fetchLocationWeather = async (lat: number, lon: number) => {
-  const apiUri = new URL('http://api.weatherapi.com/v1/current.json')
+  const apiUri = new URL('https://api.weatherapi.com/v1/current.json')
   apiUri.searchParams.append('key', import.meta.env.VITE_WEATHER_API_KEY)
   apiUri.searchParams.append('q', `${lat},${lon}`)
 
