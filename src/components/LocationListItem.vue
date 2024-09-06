@@ -11,7 +11,7 @@ defineProps<{
 
 <template>
   <li class="flex justify-between py-4 px-4 transition-colors divide-primary-150 items-center">
-    <span>{{ label }}</span>
+    <span class="text-gray-700">{{ label }}</span>
     <div class="flex items-center divide-x">
       <span class="text-gray-500 ml-auto pr-2">{{ temperature.toFixed(1) }}°C</span>
       <div class="pl-2 flex gap-2">
