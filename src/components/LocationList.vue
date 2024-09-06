@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue'
 import LocationListItem from './LocationListItem.vue'
 import { type LocationWithWeather } from '@/types/LocationWithWeather'
 
