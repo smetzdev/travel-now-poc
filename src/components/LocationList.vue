@@ -1,10 +1,20 @@
-<script setup>
+<script lang="ts" setup>
+import { defineProps } from 'vue'
 import LocationListItem from './LocationListItem.vue'
+import { type LocationWithWeather } from '@/types/LocationWithWeather'
+
+defineProps<{
+  locations: LocationWithWeather[]
+}>()
 </script>
 
 <template>
   <ul class="divide-y">
-    <LocationListItem location-name="Saarbrücken" :temperature="24" />
-    <LocationListItem location-name="Bierfeld" :temperature="23" />
+    <LocationListItem
+      :key="location.label"
+      v-for="location in locations"
+      :label="location.label"
+      :temperature="location.temperature"
+    />
   </ul>
 </template>
