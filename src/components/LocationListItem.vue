@@ -10,10 +10,17 @@ defineProps<{
 </script>
 
 <template>
-  <li class="flex justify-between py-4 px-4 transition-colors divide-primary-150 items-center">
-    <span class="text-gray-700">{{ label }}</span>
-    <div class="flex items-center divide-x">
-      <span class="text-gray-500 ml-auto pr-2">{{ temperature.toFixed(1) }}°C</span>
+  <li
+    class="flex items-center py-4 px-4 transition-colors divide-x divide-primary-150 items-center"
+  >
+    <div class="flex justify-between items-center flex-1">
+      <span>{{ label }}</span>
+      <span class="ml-auto pr-2 text-gray-700 text-2xl md:text-3xl font-thin font-mono">
+        {{ temperature.toFixed(0) }}°
+      </span>
+    </div>
+    <div class="flex items-center">
+      <!-- Row UI -->
       <div class="pl-2 flex gap-2">
         <button @click="removeLocation" title="Remove Location">
           <span class="sr-only">Remove Location</span>
