@@ -4,11 +4,19 @@ import { mockFetchWithResponse } from './testHelper'
 const mockApiResponse = {
   features: [
     {
-      geometry: {
-        coordinates: [
-          6.996115, // lon
-          49.227313 // lat
-        ]
+      properties: {
+        coordinates: {
+          longitude: 6.996115,
+          latitude: 49.227313
+        },
+        context: {
+          place: {
+            name: 'Saarbrücken'
+          },
+          country: {
+            country_code: 'DE'
+          }
+        }
       }
     }
   ]
@@ -19,11 +27,11 @@ beforeEach(() => {
 })
 
 it('should fetch a city based on a search string', async () => {
-  const [expectedLon, expectedLat] = mockApiResponse.features[0].geometry.coordinates
   const expectedUrl = `https://api.mapbox.com/search/geocode/v6/forward?access_token=${import.meta.env.VITE_GEOCODE_API_KEY}&q=Saarbr%C3%BCcken`
   const expectedResult = {
-    lat: expectedLat,
-    lon: expectedLon
+    lat: 49.227313,
+    lon: 6.996115,
+    label: 'Saarbrücken, DE'
   }
 
   const result = await fetchLocation('Saarbrücken')

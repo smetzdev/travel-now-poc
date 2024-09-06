@@ -12,18 +12,32 @@ export const fetchLocation = async (citySearchString: string) => {
 
   const data: geocodeApiRespone = await apiResponse.json()
 
-  const [lon, lat] = data.features[0].geometry.coordinates
+  const location = data.features[0].properties
+  const coordinates = location.coordinates
+  const context = location.context
 
   return {
-    lat,
-    lon
+    lat: coordinates.latitude,
+    lon: coordinates.longitude,
+    label: `${context.place.name}, ${context.country.country_code}` // Saarbrücken, DE
   }
 }
 
 type geocodeApiRespone = {
   features: {
-    geometry: {
-      coordinates: [number, number]
+    properties: {
+      coordinates: {
+        longitude: number
+        latitude: number
+      }
+      context: {
+        place: {
+          name: string
+        }
+        country: {
+          country_code: string
+        }
+      }
     }
   }[]
 }
