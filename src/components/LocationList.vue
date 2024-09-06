@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <ul class="divide-y">
+  <ul class="divide-y" v-auto-animate>
     <LocationListItem
       :key="location.label"
       v-for="location in locations"
