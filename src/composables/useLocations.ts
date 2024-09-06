@@ -26,7 +26,10 @@ export function useLocations() {
     } catch (error) {
       alert('Could not create location.')
       console.error(error)
+      return false
     }
+
+    return true
   }
 
   const removeLocation = (index: number) => {

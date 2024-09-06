@@ -1,19 +1,25 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { CgSpinner } from '@kalimahapps/vue-icons'
 
 const props = defineProps<{
-  addLocation: (searchString: string) => void
+  addLocation: (searchString: string) => Promise<boolean>
 }>()
 
 const searchString = ref('')
+const isLoading = ref(false)
 
-const submit = (e: Event) => {
+const submit = async (e: Event) => {
   e.preventDefault()
+  isLoading.value = true
   if (!searchString.value) return // you could hit enter and the form submits...
 
-  props.addLocation(searchString.value)
+  const success = await props.addLocation(searchString.value)
 
-  searchString.value = ''
+  if (success) {
+    searchString.value = ''
+  }
+  isLoading.value = false
 }
 </script>
 
@@ -28,9 +34,11 @@ const submit = (e: Event) => {
       required
     />
     <button
-      class="px-4 py-2 bg-primary-500 text-primary-50 rounded-r-md hover:bg-primary-600 transition-colors active:bg-primary-700"
+      class="px-4 py-2 bg-primary-500 text-primary-50 rounded-r-md hover:bg-primary-600 transition-colors active:bg-primary-700 min-h-8 sm:min-w-36 disabled:grayscale"
+      :disabled="isLoading"
     >
-      Add<span class="max-sm:hidden"> Location</span>
+      <span v-if="!isLoading">Add<span class="max-sm:hidden"> Location</span> </span>
+      <CgSpinner v-if="isLoading" class="animate-spin mx-auto" />
     </button>
   </form>
 </template>
