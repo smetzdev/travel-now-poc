@@ -10,9 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <li
-    class="flex items-center py-4 px-4 transition-colors divide-x divide-primary-150 items-center"
-  >
+  <li class="flex items-center py-4 transition-colors divide-x divide-primary-150 items-center">
     <div class="flex justify-between items-center flex-1">
       <span>{{ label }}</span>
       <span class="ml-auto pr-2 text-gray-700 text-2xl md:text-3xl font-thin font-mono">
