@@ -37,6 +37,7 @@ const submit = async () => {
     <button
       class="px-4 py-2 bg-primary-500 text-primary-50 rounded-r-md hover:bg-primary-600 transition-colors active:bg-primary-700 min-h-8 sm:min-w-36 disabled:grayscale"
       :disabled="isLoading"
+      aria-label="Submit"
     >
       <CgSpinner v-if="isLoading" class="animate-spin mx-auto" />
       <span v-else>Add<span class="max-sm:hidden">&nbsp;Location</span></span>
