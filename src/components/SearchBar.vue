@@ -32,6 +32,8 @@ const submit = async (e: Event) => {
       v-model="searchString"
       @keydown.enter="submit"
       required
+      name="search"
+      autocomplete="off"
     />
     <button
       class="px-4 py-2 bg-primary-500 text-primary-50 rounded-r-md hover:bg-primary-600 transition-colors active:bg-primary-700 min-h-8 sm:min-w-36 disabled:grayscale"
