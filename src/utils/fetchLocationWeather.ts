@@ -1,4 +1,7 @@
-export const fetchLocationWeather = async (lat: number, lon: number) => {
+/**
+ * @returns current temperature of a location
+ */
+export const fetchLocationWeather = async (lat: number, lon: number): Promise<number> => {
   const apiUri = new URL('https://api.weatherapi.com/v1/current.json')
   apiUri.searchParams.append('key', import.meta.env.VITE_WEATHER_API_KEY)
   apiUri.searchParams.append('q', `${lat},${lon}`)

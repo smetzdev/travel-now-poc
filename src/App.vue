@@ -4,7 +4,7 @@ import LocationList from '@/components/LocationList.vue'
 import LocationMap from '@/components/LocationMap.vue'
 import { useLocations } from '@/composables/useLocations'
 
-const { currentLocation, locations, addLocation, removeLocation, setCurrentCurrentLocation } =
+const { currentLocation, locations, addLocation, removeLocation, setCurrentLocation } =
   useLocations()
 </script>
 
@@ -21,7 +21,7 @@ const { currentLocation, locations, addLocation, removeLocation, setCurrentCurre
       <LocationList
         :locations="locations"
         :remove-location="removeLocation"
-        :set-current-location="setCurrentCurrentLocation"
+        :set-current-location="setCurrentLocation"
       />
     </div>
   </main>
