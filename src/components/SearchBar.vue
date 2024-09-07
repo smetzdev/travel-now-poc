@@ -29,7 +29,7 @@ const submit = async () => {
       type="text"
       placeholder="Enter ZIP and/or city..."
       v-model="searchString"
-      @keydown.enter="submit"
+      @keydown.enter.prevent="submit"
       required
       name="search"
       autocomplete="off"
