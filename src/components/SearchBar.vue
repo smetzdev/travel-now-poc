@@ -9,10 +9,9 @@ const props = defineProps<{
 const searchString = ref('')
 const isLoading = ref(false)
 
-const submit = async (e: Event) => {
-  e.preventDefault()
-  isLoading.value = true
+const submit = async () => {
   if (!searchString.value) return // you could hit enter and the form submits...
+  isLoading.value = true
 
   const success = await props.addLocation(searchString.value)
 
@@ -24,7 +23,7 @@ const submit = async (e: Event) => {
 </script>
 
 <template>
-  <form class="flex shadow-sm" @submit="submit">
+  <form class="flex shadow-sm" @submit.prevent="submit">
     <input
       class="flex-1 border-0 rounded-l-md py-4 bg-white focus:ring-inset focus:ring-primary-500"
       type="text"
