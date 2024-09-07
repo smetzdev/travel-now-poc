@@ -1,6 +1,6 @@
 import '@fontsource-variable/inter'
 import '@fontsource-variable/chivo-mono'
-import './assets/tailwind.css'
+import '@/assets/tailwind.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 import { createApp } from 'vue'
