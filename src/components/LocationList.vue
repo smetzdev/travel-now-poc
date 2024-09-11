@@ -15,9 +15,10 @@ defineProps<{
       :key="location.label"
       v-for="(location, index) in locations"
       :label="location.label"
+      :index="index"
       :temperature="location.temperature"
-      :remove-location="() => removeLocation(index)"
-      :set-current-location="() => setCurrentLocation(index)"
+      @remove-location="removeLocation"
+      @set-current-location="setCurrentLocation"
     />
   </ul>
 </template>
